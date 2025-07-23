@@ -57,7 +57,7 @@ def est_calib(imagedir):
 
 def get_dimention(imagedir):
     """ Get proper image dimension for DROID """
-    imgfiles = sorted(glob(f'{imagedir}/*.jpg'))
+    imgfiles = sorted(glob(f'{imagedir}/*.jpg')+glob(f'{imagedir}/*.png'))
     image = cv2.imread(imgfiles[0])
 
     h0, w0, _ = image.shape
