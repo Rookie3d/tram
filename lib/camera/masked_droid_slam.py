@@ -29,7 +29,7 @@ def run_metric_slam(img_folder, masks=None, calib=None, is_static=False):
                If None, will be naively estimated.
     '''
 
-    imgfiles = sorted(glob(f'{img_folder}/*.jpg'))
+    imgfiles = sorted(glob(f'{img_folder}/*.jpg')+glob(f'{img_folder}/*.png'))
 
     ##### If static camera, simply return static camera motion #####
     if is_static:
@@ -55,6 +55,7 @@ def run_metric_slam(img_folder, masks=None, calib=None, is_static=False):
     pred_depths = []
     H, W = get_dimention(img_folder)
     for t in tqdm(tstamp):
+        print(t)
         img = cv2.imread(imgfiles[t])[:,:,::-1]
         img = cv2.resize(img, (W, H))
         
