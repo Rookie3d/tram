@@ -19,10 +19,6 @@ parser.add_argument("--visualize_mask", action='store_true', help='save deva vos
 parser.add_argument("--output_folder", type=str, default='./example_video.mov', help='output')
 args = parser.parse_args()
 
-# File and folders
-file = args.video
-root = os.path.dirname(file)
-seq = os.path.basename(file).split('.')[0]
 
 seq_folder = args.output_folder
 img_folder = args.img_folder
