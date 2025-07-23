@@ -45,7 +45,7 @@ slam_args.disable_vis = True
 
 def est_calib(imagedir):
     """ Roughly estimate intrinsics by image dimensions """
-    imgfiles = sorted(glob(f'{imagedir}/*.jpg'))
+    imgfiles = sorted(glob(f'{imagedir}/*.jpg')+glob(f'{imagedir}/*.png'))
     image = cv2.imread(imgfiles[0])
 
     h0, w0, _ = image.shape
@@ -80,7 +80,7 @@ def image_stream(imagedir, calib, stride=1, max_frame=None):
     K[1,1] = fy
     K[1,2] = cy
 
-    image_list = sorted(glob(f'{imagedir}/*.jpg'))
+    image_list = sorted(glob(f'{imagedir}/*.jpg')+glob(f'{imagedir}/*.png'))
     image_list = image_list[::stride]
     if max_frame is not None:
         image_list = image_list[:max_frame]
