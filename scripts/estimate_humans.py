@@ -8,7 +8,6 @@ import numpy as np
 from glob import glob
 
 from lib.models import get_hmr_vimo
-from lib.pipeline import visualize_tram
 
 
 parser = argparse.ArgumentParser()
