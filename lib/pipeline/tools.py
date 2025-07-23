@@ -134,12 +134,16 @@ def detect_segment_track(imgfiles, out_path, thresh=0.5, min_size=None,
     for frame in ann:         
         seg = frame['segmentations']
         file = frame['file_name']
-        frame = int(file.split('.')[0])
+        frame = int(file.split('.')[0].split('_')[-1])
+        frame = frame -1
+        #frame = int(file.split('.')[0])
         for subj in seg:  
             idx = subj['id']
             msk = subj['rle']
             msk = torch.from_numpy(masktool.decode(msk))[None]
             
+            print('frame = ', frame)
+            print('boxes_ = ', len(boxes_))
             # match tracked segment to detections
             det_boxes = boxes_[frame]
             if len(det_boxes)>0:
